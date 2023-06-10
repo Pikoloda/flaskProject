@@ -22,7 +22,10 @@ def current_date2():
 def counter_view():
     global counter
     counter += 1
-    return f'Visit counter: {}'
+    return f'Visit counter: {counter}'
+
+# http://localhost:5000/counter
+
 
 if __name__ == '__main__':
     app.run()
