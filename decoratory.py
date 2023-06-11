@@ -9,3 +9,4 @@ def call_function(function):
 
 
 print(call_function(plus_one))
+

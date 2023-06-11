@@ -1,31 +1,44 @@
-from flask import Flask
+from flask import Flask,render_template
 from datetime import datetime
+import random
+
+
 
 app = Flask(__name__)
 
-counter = 0
 
 @app.route('/')
 def hello_world():  # put application's code here
     return 'Hello World!'
 
+
 @app.route('/date')
 def current_date():
     return f'Response time: {str(datetime.now())}'
-# http://localhost:5000/date
 
-@app.route('/date2')
-def current_date2():
-    return f'Response time: {str(datetime.now())}'
+
+counter = 0
+
 
 @app.route('/counter')
-def counter_view():
+def counter():
     global counter
     counter += 1
     return f'Visit counter: {counter}'
 
-# http://localhost:5000/counter
 
+@app.route('/colour')
+def select_colour():
+    colour_list = ['red', 'blue', 'green']
+    return colour_list[random.randint(0,2)]
+
+
+@app.route('/hello-world')
+def hello_world_html():
+    return render_template('welcome.html')
+
+
+print(app.url_map)
 
 if __name__ == '__main__':
     app.run()
